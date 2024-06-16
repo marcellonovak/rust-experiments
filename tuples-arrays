@@ -1,0 +1,31 @@
+use std::io;
+
+fn main() {
+    // Access value of a tuple
+    let x: (i32, f64, u8) = (500, 6.4, 1);
+    let five_hundred   = x.0;
+    let six_point_four = x.1;
+    let one            = x.2;
+    println!("{five_hundred}, {six_point_four}, {one}");
+    
+    // Array type
+    let a = [1, 2, 3, 4, 5];
+    
+    // get a changeable index input
+    println!("Please enter an array index.");
+    let mut index = String::new();
+    
+    // Read user input for index, error catch
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+    
+    // trim, parse (for numbers), error catch
+    // usize is an integer for indexing, u32 on 32bit, u64 on 64bit
+    let index: usize = index.trim().parse()
+        .expect("Index entered was not a number");
+    
+    // assign and print
+    let element = a[index];
+    println!("The value of the element at index {index} is: {element}");
+}
